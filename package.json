@@ -1,12 +1,11 @@
 {
-  "name": "alterego",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "homepage": "http://vnahornyi.github.io/alterego",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --base=./",
+    "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
