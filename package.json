@@ -1,14 +1,12 @@
 {
+  "name": "alterego",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://vnahornyi.github.io/alterego/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -39,7 +37,6 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
-    "gh-pages": "^5.0.0",
     "typescript": "*",
     "vite": "^4.1.0"
   }
