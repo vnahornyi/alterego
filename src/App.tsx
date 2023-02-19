@@ -6,6 +6,9 @@ import * as routes from "./constants/routes";
 import { useAppDispatch } from "./hooks";
 import { prepareUser } from "./store/actions/auth";
 
+import MainLayout from "./modules/MainLayout";
+import AuthLayout from "./modules/AuthLayout";
+
 const HomePage = loadable(() => import("./pages/HomePage"));
 const LoginPage = loadable(() => import("./pages/LoginPage"));
 const ProfilePage = loadable(() => import("./pages/ProfilePage"));
@@ -22,11 +25,15 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={routes.HOME} element={<HomePage />} />
-        <Route path={routes.LOGIN} element={<LoginPage />} />
-        <Route path={routes.PROFILE} element={<ProfilePage />} />
-        <Route path={routes.NEWS} element={<NewsPage />} />
-        <Route path={routes.NOT_FOUND} element={<NotFoundPage />} />
+        <Route element={<MainLayout />}>
+          <Route path={routes.NEWS} element={<NewsPage />} />
+          <Route path={routes.HOME} element={<HomePage />} />
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route path={routes.LOGIN} element={<LoginPage />} />
+          <Route path={routes.PROFILE} element={<ProfilePage />} />
+          <Route path={routes.NOT_FOUND} element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

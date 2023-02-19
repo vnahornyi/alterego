@@ -1,24 +1,18 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 
-import { HOME } from "@^/constants/routes";
+import { HOME, LOGIN } from "@^/constants/routes";
 import { useAppSelector } from "@^/hooks";
 import Logo from "@^/UI/Logo";
 import LoadingScreen from "@^/components/LoadingScreen";
 
-interface IAuthLayoutProps {
-  shouldRedirectWhenAuthorized?: boolean;
-  children: React.ReactNode;
-}
-
-const AuthLayout: React.FC<IAuthLayoutProps> = ({
-  children,
-  shouldRedirectWhenAuthorized,
-}) => {
+const AuthLayout: React.FC = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const isLoading = useAppSelector((state) => state.auth.isLoading);
   const isAuthorized = useAppSelector((state) => state.auth.isAuthorized);
+  const shouldRedirectWhenAuthorized = pathname.includes(LOGIN);
 
   useEffect(() => {
     if (
@@ -68,7 +62,9 @@ const AuthLayout: React.FC<IAuthLayoutProps> = ({
           zIndex: 2,
         })}
       >
-        <Box p={6}>{children}</Box>
+        <Box p={6}>
+          <Outlet />
+        </Box>
       </Paper>
     </Box>
   );

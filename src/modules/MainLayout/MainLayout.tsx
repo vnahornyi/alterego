@@ -1,16 +1,15 @@
 import { Container } from "@mui/material";
+import { Outlet } from "react-router-dom";
 
 import Header from "@^/components/Header/Header";
 
-interface IMainLayoutProps {
-  children: React.ReactNode;
-}
-
-const MainLayout: React.FC<IMainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC = () => {
   return (
     <>
       <Header />
-      <Container fixed sx={{ py: 4 }}>{children}</Container>
+      <Container fixed sx={{ py: 4 }}>
+        <Outlet />
+      </Container>
     </>
   );
 };
